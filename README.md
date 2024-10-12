@@ -18,7 +18,7 @@ This project is a FastAPI application that performs CRUD operations with MongoDB
 1. Clone the Repository
 
 git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+cd 
 
 2. Create a Virtual Environment
 #Create a virtual environment and activate it.
@@ -51,6 +51,7 @@ Ensure you have installed the required dependencies using pip install -r require
 Run the application using uvicorn main:app --reload.
 
 -->API Endpoints
+**About items details**
 
 1. Create an Item
 Endpoint: /items
@@ -156,6 +157,92 @@ Response Example:
     "total_items": 5
   }
 ]
+
+**About clock-in details**
+
+1. Create an clock-in
+Endpoint: /clock-in
+
+Method: POST
+
+Description: Adds a new details to the MongoDB database.
+
+Request Body Example:
+
+{
+  "email": "email@example.com"
+  "location": "hyderabad'
+
+}
+Response Example:
+
+{
+  "id": "64ac7c5e123456789abcedf3"
+}
+
+2. Get an details by ID
+Endpoint: /clock-in/{id}
+
+Method: GET
+
+Description: Retrieves an details by its MongoDB ObjectId.
+
+Response Example:
+{
+  "_id": "64ac7c5e123456789abcedf3"
+  "email": "email@example.com",
+  "location": "hyderabad"
+  "insert_date": "2023-07-15T12:34:56"
+}
+
+3. Filter details
+Endpoint: /clock-in/filter
+
+Method: GET
+
+Description: Filters details based on various parameters such as email, location, insert_date.
+
+Query Parameters:
+
+email: Filter by email address.
+insert_date: Filter by insert date (greater than).
+location: Filter by location
+Example Request:
+
+GET /items/filter_by?email=email@example.com&location=hyderabad
+
+
+4. Update an details
+Endpoint: /clock-in/{id}
+
+Method: PUT
+
+Description: Updates an existing details in the database by its ObjectId.
+
+Request Body Example:
+
+{
+  "location": "Hyderabad",
+  
+}
+Response Example:
+
+{
+  "msg": "Clock-in record updated"
+}
+
+5. Delete an details
+Endpoint: /clock-in/{id}
+
+Method: DELETE
+
+Description: Deletes an details from the database by its ObjectId.
+
+Response Example:
+
+{
+  "msg": "Clock-in record deleted"
+}
 
 
 
